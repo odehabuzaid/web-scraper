@@ -15,7 +15,8 @@ def get_citations_needed_count(url):
     
     returns   : count -> int
     """
-    pass
+    citations_needed = get_wiki_page(url,"a", title="Wikipedia:Citation needed")
+    return len(citations_needed)
 
 def get_citations_needed_report(url):
     """
@@ -25,5 +26,16 @@ def get_citations_needed_report(url):
     
     returns   : count -> int
     """
-    pass
+
+    cites = get_wiki_page(url,"a", title="Wikipedia:Citation needed")
  
+    cn_content = ''
+    for cite in cites:
+        parent_p = cite.find_parent("p")
+        paragraph = str(parent_p.text).replace('[citation needed]','').replace('[6]','')
+        cn_content += paragraph + "\n"
+    return cn_content
+
+
+print(get_citations_needed_count('https://en.wikipedia.org/wiki/History_of_Mexico'))
+print(get_citations_needed_report('https://en.wikipedia.org/wiki/History_of_Mexico'))
