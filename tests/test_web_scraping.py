@@ -25,4 +25,3 @@ def test_successfully_return_citations_needed_report():
 
 
 
-

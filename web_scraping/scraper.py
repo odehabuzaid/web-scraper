@@ -26,7 +26,7 @@ def get_citations_needed_report(url):
 
     arguments : url -> String
 
-    returns   : count -> int
+    returns   : content -> List
     """
 
     cites = get_wiki_page(url, "a", title="Wikipedia:Citation needed")
